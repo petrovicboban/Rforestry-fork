@@ -174,11 +174,12 @@ jobs:
       - name: show version
         run: echo "${{ steps.version.outputs.is-prerelease }}"
 
-#      - name: Publish packages to PyPI
-#        uses: pypa/gh-action-pypi-publish@release/v1
-#        with:
-#          password: ${{ secrets.PYPI_API_TOKEN }}
-#          packages-dir: packages/
+      - name: Publish packages to PyPI
+        if: !steps.version.outputs.is-prerelease
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: packages/
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
