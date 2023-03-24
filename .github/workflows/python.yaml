@@ -175,7 +175,7 @@ jobs:
         run: echo "${{ steps.version.outputs.is-prerelease }}"
 
       - name: Publish packages to PyPI
-        if: ! steps.version.outputs.is-prerelease
+        if: steps.version.outputs.is-prerelease == "false"
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
