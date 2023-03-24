@@ -162,11 +162,18 @@ jobs:
       - name: List
         run: |
           ls -alh packages
-      - name: Parse version from tag
+
+      - name: Extract Tag
+        id: tag
+        uses: aaronbarnaby/get-tag@v1.0.0
+      - name: Parse tag
         id: version
-        uses: release-kit/semver@v1
+        uses: akshens/semver-tag@v4
+        with:
+          version: ${{ steps.tag.outputs.tag }}
       - name: show version
-        run: echo "${{ steps.version.outputs.prerelease }}"
+        run: echo "${{ steps.version.outputs.is-prerelease }}"
+
 #      - name: Publish packages to PyPI
 #        uses: pypa/gh-action-pypi-publish@release/v1
 #        with:
