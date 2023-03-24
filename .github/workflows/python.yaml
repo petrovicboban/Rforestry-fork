@@ -180,7 +180,8 @@ jobs:
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           packages-dir: packages/
-          
+          repository-url: https://test.pypi.org/legacy/
+
       - name: Publish packages to PyPI
         if: steps.version.outputs.is-prerelease == 'false'
         uses: pypa/gh-action-pypi-publish@release/v1
