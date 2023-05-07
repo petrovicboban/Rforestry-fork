@@ -65,6 +65,10 @@ training_data_checker <- function(x,
     stop("y contains missing data.")
   }
 
+  if (any(sapply(x, function(x) all(is.na(x))))) {
+    stop("training data column cannot be all NAs")
+  }
+
   if (!is.logical(replace)) {
     stop("replace must be TRUE or FALSE.")
   }
