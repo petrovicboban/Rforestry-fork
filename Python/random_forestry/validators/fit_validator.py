@@ -126,6 +126,9 @@ class FitValidator(BaseValidator):
         if np.isnan(y).any():
             raise ValueError("y contains missing data.")
 
+        if len(x.columns[x.isnull().all()]) > 0:
+            raise ValueError("Training data column cannot be all missing values.")
+
         if _self.linear and x.isnull().values.any():
             raise ValueError("Cannot do imputation splitting with linear.")
 
