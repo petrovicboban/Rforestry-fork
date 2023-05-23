@@ -15,8 +15,8 @@ jobs:
         with:
           branch_pattern: '^[a-z]{2,3}/.*'
           comment_for_invalid_branch_name: | 
-            Ups! This branch name is not following the regex '^[a-z]{2,3}/.*'
-            Please use '<author_initials>/<common_sense_branch_name>'
+            Ups! This branch name is not following the regex `^[a-z]{2,3}/.*`
+            Please delete this PR, rename the branch to `<author_initials>/<common_sense_branch_name>`, and create new PR.
           fail_if_invalid_branch_name: true
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
