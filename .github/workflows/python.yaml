@@ -61,7 +61,7 @@ jobs:
       - name: black
         working-directory: Python/
         run: |
-          python3 -m black . --check --diff --exclude extensio
+          python3 -m black . --check --diff --exclude extension
 
       - name: Build
         working-directory: Python/
