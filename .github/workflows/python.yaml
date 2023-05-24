@@ -112,6 +112,7 @@ jobs:
           output-dir: Python/dist
 
       - name: Get Coverage 
+        if: github.event_name == 'pull_request'
         uses: petrovicboban/coverage@1.2
         with:
             coverageFile: /coverage.xml
