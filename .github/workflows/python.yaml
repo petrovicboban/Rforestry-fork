@@ -43,6 +43,7 @@ jobs:
         run: pip install -r ci-requirements.txt
 
       - name: flake8
+        if: github.event_name == 'pull_request'
         working-directory: Python/
         run: |
           python3 -m flake8
